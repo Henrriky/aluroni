@@ -212,3 +212,14 @@
     - Passar as props do componente, desestruturando apenas o que vamos utilizar.
     - Refatorar o Item.tsx e Prato.tsx, renderizando o componente com o spread operator de um unico prato.
 - Vamos fazer com que o header apareça no Prato.tsx, movendo ele para dentro do Route do PaginaPadrao.
+
+# AJUSTES NO NOTFOUND E HEADER
+
+## Notfound na tela de detalhes
+
+- Vamos ao invés de retornar uma string vazia, retornar o componente de NotFound quando não existir um prato para aquele ID.
+- Além disso, vamos implementar a função de ler mais sobre o prato na página do cardápio para melhor a UX, para isso vamos atribuir um evento de click para a nossa div e usar o useNavigate para enviar o usuario para a pagina de pratos com o id.
+- **OBS:** `<Navigate/>`
+    ```Incrível! Podemos utilizar esse componente quando quisermos que, ao carregar a página, sejamos redirecionados para uma outra página. Essa técnica pode ser utilizada quando queremos barrar um usuário de acessar uma página, ou redirecionar para uma NotFound, por exemplo. Passamos como parâmetro o to, que recebe como valor a rota a ser redirecionada.```
+    
+## Resolvendo o Header
