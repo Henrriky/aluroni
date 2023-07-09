@@ -130,7 +130,8 @@
 
 ## VOLTANDO PARA OUTRA TELA
 
--
+- Resolvendo erro do header
+- Voltando para tela anterior
 
 
 
