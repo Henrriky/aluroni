@@ -1,6 +1,7 @@
 # O QUE É SPA
 
-- Browser Router, Routes, Route, Link, useNavigation, useLocation, useParams.
+- ESLint, sort, splice, window.location.pathname, reutilização de componentes, pagina padrão, pagina coringa (*).
+- Browser Router, Routes, Route, Link, outlet, useNavigation, useLocation, useParams.
 
 ## ESLINT
 
@@ -157,3 +158,44 @@
     - Nesse caso utilizamos o useNavigate que é um hook do react router, e pegamos uma função do useNavigate, essa função pode receber como argumentos um número ou uma string, sendo o -1 a pagina anterior e a strin a pagina que queremos q o usuario seja redirecionado.
 
 
+# FINALIZANDO O PROJETO
+
+## Criando a rota Prato
+
+- Vamos criar uma page prato, e importar ela no nosso arquivo routes.js foram do route que recebe nossa paginaPadrao.
+    - Nessa pagina vamos precisar usar id dinâmico, pois quando o usuario clicar em uma receita ele vai ser redirecionado para uma pagina /pratos/id sendo id o id do prato que ele clicou em ler mais.
+    - Para isso, nós vamos usar os ids dinâmicos e depois pegar ele com o `useParams` ou o `useLocation`
+    ```js
+        <Route path='prato/:id' element={<Prato/>}/>
+    ```
+    - Vamos importar dentro do Prato.tsx o useParams
+    ```js
+        import { useParams } from 'react-router-dom';
+    ```
+
+## useLocation e state
+
+- No useLocation nós temos mais propriedades para pegar, diferentemente no useParams, que pega apenas o valor que vem depois dos dois pontos ":". Além disso, dentro dele temos também:
+    - hash:
+    - key:
+    - pathname: URL que nós estamos. Exemplo: `/prato/2`
+    - search: query params da nossa aplicação. Exemplo: pratos/2`?descricao=teste`
+    - state: variavel passada pelo useNavigate da aplicação que redirecionar para a pagina
+- Para enviar o prato para a nossa pagina de pratos vamos ter que redirecionar da tela de inicio a partir de um clique no botão de ver mais:
+    ```js
+        function redirecionarParaDetalhes(prato: typeof cardapio[0]) {
+            navigate(`/prato/${prato.id}`, { state: { ...prato }});
+        }
+    ```
+    - Essa função executa o navigate, passando todas as propriedades do prato que chamou a função.
+    - Além disso, no próprio window.history nós temos esse state.
+    - Outro parâmetro do navigate é o replace, que nada mais é do que um boolean, e faz com que a gente navegue para a rota Prato e substitua na pilha a pagina que enviou para a prato o Prato em si.
+    - Um exemplo de quando usamos isso é o Login, pois quando realizamos ele e você já fez ele a gente não quer que no historico tenha a tela de Login.
+
+## Detalhes do prato
+
+- Essa parte não tem segredo, é só aplicar o CSS com o module e colocar os dados dos pratos nas respectivas divs. Além disso, devemos tipar o state que é recebido pelo useLocation
+    ```js
+      const { prato } = state as { prato: typeof cardapio[0]}; 
+    ```
+- Entretanto, tem um gap de erro na nossa aplicação, pois o estado do useLocation pode vir vazio se o usuario tentar acessar a nossa aplicação diretamente.
