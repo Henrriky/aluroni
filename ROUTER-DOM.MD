@@ -123,6 +123,14 @@
 ## CRIANDO O NOTFOUND
 
 - Criar o footer (componente)
+- Criar pagina de NotFound e seu estilo
+- Adicionar pagina para o routes.js
+    - Para isso, vamos criar um `<Route path='*'/>` que recebe como path tudo que não for o que ja foi definido.
+- Entretanto, agora nossa aplicação está pegando o header do paginaPadrao, e nós não queremos isso.
+
+## VOLTANDO PARA OUTRA TELA
+
+-
 
 
 
