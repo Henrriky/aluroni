@@ -132,6 +132,28 @@
 
 - Resolvendo erro do header
 - Voltando para tela anterior
+    - Para voltar para a tela anterior vamos criar um botão, e esse botão vai chamar uma função que volta para a tela anterior
+    - O react-router-dom possui um histórico que funciona como uma pilha. Ou seja, se ele estiver em uma rota e pedir para ele voltar com base no histórico ele vai voltar para a rota de baixo dele.
+    ```js
+    import { useNavigate } from 'react-router-dom';
 
+    export default function NotFound() {
+    const navigate = useNavigate();
+    return (
+        <div className={classNames({
+        [styles.container]: true,
+        [stylesTema.container]: true 
+        })}>
+        <div className={styles.voltar}>
+            <button onClick={() => navigate(-1)}>
+            {'<Voltar'}
+            </button>
+        </div>
+        <NotFoundImage />
+        </div>
+    );
+    }
+    ```
+    - Nesse caso utilizamos o useNavigate que é um hook do react router, e pegamos uma função do useNavigate, essa função pode receber como argumentos um número ou uma string, sendo o -1 a pagina anterior e a strin a pagina que queremos q o usuario seja redirecionado.
 
 
