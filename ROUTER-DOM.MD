@@ -221,5 +221,51 @@
 - Além disso, vamos implementar a função de ler mais sobre o prato na página do cardápio para melhor a UX, para isso vamos atribuir um evento de click para a nossa div e usar o useNavigate para enviar o usuario para a pagina de pratos com o id.
 - **OBS:** `<Navigate/>`
     ```Incrível! Podemos utilizar esse componente quando quisermos que, ao carregar a página, sejamos redirecionados para uma outra página. Essa técnica pode ser utilizada quando queremos barrar um usuário de acessar uma página, ou redirecionar para uma NotFound, por exemplo. Passamos como parâmetro o to, que recebe como valor a rota a ser redirecionada.```
-    
+
 ## Resolvendo o Header
+
+- Uma forma de resolver o problema do header é passando para o PaginaPadrao um children nas suas props e exibindo ele dentro do container que nós definimos, e quando formos renderizar o prato.tsx ele vai renderizar com o header, pois o PaginaPadrao vai estar englobando o elemento tsx
+    ```js
+        export default function PaginaPadrao({ children }: { children?: React.ReactNode }) {
+        return (
+            <>
+            <header className={styles.header}>
+                <div className={styles.header__text}>
+                A casa do código e da massa
+                </div>
+            </header>
+            <div className={stylesTema.container}>
+                <Outlet/>
+                {children}
+            </div>
+            </>
+        );
+        }
+
+          if (!prato) {
+                return <NotFound/>;
+            }
+
+            return (
+                <PaginaPadrao>
+                <button className={styles.voltar} onClick={() => { navigate(-1); }}>
+                    {'< Voltar '}
+                </button>
+                <section className={styles.container}>
+                    <h1 className={styles.titulo}>
+                    {prato.title}
+                    </h1>
+                    <div className={styles.imagem}>
+                    <img src={prato.photo} alt={prato.title} />
+                    </div>
+                    <div className={styles.conteudo}>
+                    <p className={styles.conteudo__descricao}>
+                        {prato.description}
+                    </p>
+                    <TagsPrato {...prato}/>
+                    </div>
+                </section>
+                </PaginaPadrao>
+            );
+    ```
+- 2º Maneira: Podemos criar um novo route dentro de Prato.tsx e dentro dele nós vamos colocar um Route que tem a pagina padrão e vai ter um filho Route que tem o path index e que tem como elemento o conteudo de prato que tinhamos anteriormente dentro de fragment.
