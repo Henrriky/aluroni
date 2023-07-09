@@ -199,3 +199,9 @@
       const { prato } = state as { prato: typeof cardapio[0]}; 
     ```
 - Entretanto, tem um gap de erro na nossa aplicação, pois o estado do useLocation pode vir vazio se o usuario tentar acessar a nossa aplicação diretamente.
+
+## Usando o useParams
+
+- Como a gente não quer que exiba uma tela em branco caso o usuario vá direto na página de ler mais nós devemos realizar um condicional para caso não exista um state, pegando o id com o useParams e realizando um find no nosso cardápio e exibindo o componente na tela.
+- Para resolver isso, vamos refatorar o nosso código anterior e substituir o useLocation pelo useParams, colocando apenas um prato que faz o find no cardápio e não retorna nada se o não houver prato para aquele id. Além disso, vamos usar o useNavigate() para redirecionar o usuario para a pagina anterior com o botão voltar
+- Por fim, vamos criar dentro de `src` uma pasta chamada de `types`
