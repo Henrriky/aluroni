@@ -205,3 +205,10 @@
 - Como a gente não quer que exiba uma tela em branco caso o usuario vá direto na página de ler mais nós devemos realizar um condicional para caso não exista um state, pegando o id com o useParams e realizando um find no nosso cardápio e exibindo o componente na tela.
 - Para resolver isso, vamos refatorar o nosso código anterior e substituir o useLocation pelo useParams, colocando apenas um prato que faz o find no cardápio e não retorna nada se o não houver prato para aquele id. Além disso, vamos usar o useNavigate() para redirecionar o usuario para a pagina anterior com o botão voltar
 - Por fim, vamos criar dentro de `src` uma pasta chamada de `types`
+
+## Refatorando TAGS
+
+- Vamos criar um componente das tags (preço, porção, categoria).
+    - Passar as props do componente, desestruturando apenas o que vamos utilizar.
+    - Refatorar o Item.tsx e Prato.tsx, renderizando o componente com o spread operator de um unico prato.
+- Vamos fazer com que o header apareça no Prato.tsx, movendo ele para dentro do Route do PaginaPadrao.

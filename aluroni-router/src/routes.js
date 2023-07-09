@@ -14,15 +14,15 @@ export default function AppRouter() {
       <Router>
         <Menu />
         <Routes>
-          <Route path='/' element={<PaginaPadrao/>}>
-            <Route index element={<Inicio/>}/>
-            <Route path='cardapio' element={<Cardapio/>}/>
-            <Route path='sobre' element={<Sobre/>}/>
+          <Route path='/' element={<PaginaPadrao />}>
+            <Route index element={<Inicio />} />
+            <Route path='cardapio' element={<Cardapio />} />
+            <Route path='sobre' element={<Sobre />} />
+            <Route path='prato/:id' element={<Prato />} />
           </Route>
-          <Route path='*' element={<NotFound/>} />
-          <Route path='prato/:id' element={<Prato/>}/>
+          <Route path='*' element={<NotFound />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </main>
   );
