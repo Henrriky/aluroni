@@ -90,3 +90,31 @@
 - Para resolver esse problema, vamos criar uma pagina padrão que vai conter nosso header dentro da pasta components
 - Agora vamos colocar no element do `Route` o nosso <PaginaPadrao/> e colocar dentro de `<Route></Route>` com o element={PaginaPadrao} as rotas da aplicação.
     - Entretanto, mesmo que a gente coloque dentro do nosso Route os nossos filhos, nós não conseguimos exibir ele. Para fazer isso funcionar, vamos importar dentro do componente `PaginaPadrao.tsx` o componente `outlet` do react-router-dom, o qual vai ser colocado dentro da PaginaPadrao. Assim o router dom vai passar a reconhecer os componentes de acordo com a rota. Esse é children do react router.
+    - Estamos usando nesse caso nested routes
+
+# ROUTER DOM HOOKS
+
+## ESTILO TEMA
+
+- Vamos criar um tema.module.scss dentro da pasta styles para utilizar o title e o nosso wrapper em toda a aplicação, retirando do Cardapio e do Inicio o css do `titulo e container`.
+    - Para reutilzar o tema vamos importar o módulo stylesTema a partir da page Cardapio e Inicio, subtituindo nos titulos por stylesTema.titulo
+    - Agora basta nós colocarmos o stylesTema.container da tag div que engloba o Outlet dentro da PaginaPadrao
+    ```js
+        export default function PaginaPadrao() {
+        return (
+            <>
+            <header className={styles.header}>
+                <div className={styles.header__text}>
+                A casa do código e da massa
+                </div>
+            </header>
+            <div className={stylesTema.container}>
+                <Outlet/>
+            </div>
+            </>
+        );
+        }   
+    ```
+-
+
+
