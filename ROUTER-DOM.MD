@@ -91,6 +91,7 @@
 - Agora vamos colocar no element do `Route` o nosso <PaginaPadrao/> e colocar dentro de `<Route></Route>` com o element={PaginaPadrao} as rotas da aplicação.
     - Entretanto, mesmo que a gente coloque dentro do nosso Route os nossos filhos, nós não conseguimos exibir ele. Para fazer isso funcionar, vamos importar dentro do componente `PaginaPadrao.tsx` o componente `outlet` do react-router-dom, o qual vai ser colocado dentro da PaginaPadrao. Assim o router dom vai passar a reconhecer os componentes de acordo com a rota. Esse é children do react router.
     - Estamos usando nesse caso nested routes
+    - Além disso, agora que estamos exibindo a pagina padrão apenas para os filhos dele, caso a gente entre em uma pagina que não esta indexada ele não vai mostrar o conteudo da paginapadrao
 
 # ROUTER DOM HOOKS
 
@@ -119,7 +120,9 @@
 ## TERMINANDO A TELA INICIO
 ## TERMINANDO A TELA DE SOBRE
 
+## CRIANDO O NOTFOUND
 
+- Criar o footer (componente)
 
 
 
