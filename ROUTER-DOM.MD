@@ -75,5 +75,18 @@
 
 - Extensão React Developer Tools do Google Chrome. Essa extensão nos permite ver quando um componente é renderizado tal como as informações dos componentes como props e seus filhos.
 - Para resolver o problema anterior vamos utilizar a tag `Link` do react-router-dom
-    - Esse componente funciona igual ao 
-    
+    - Esse componente funciona igual ao a, só que a propriedade href vira to
+    - Agora podemos observar que os componentes são renderizados novamente toda vez que alteramos a rota da aplicação. Ou seja, ele não pega um doc novo e fica mudando de um componente para outro.
+
+## REAPROVEITAMENTO DO HEADER
+
+- Reaproveitar o header
+    - Vamos refatorar o routes.js, colocando uma tag main antes do conteúdo.
+    - Refatorar Cardapio.tsx, retirando a tag header e colocando ele no routes.js adicionado seu estilo
+    - Entretanto, mesmo que esteja funcionando, quando acessamos uma página não indexada a aplicação continua exibindo o header. Além disso, nosso route está tendo responsabilidade a mais.
+
+## PAGINA PADRÃO
+
+- Para resolver esse problema, vamos criar uma pagina padrão que vai conter nosso header dentro da pasta components
+- Agora vamos colocar no element do `Route` o nosso <PaginaPadrao/> e colocar dentro de `<Route></Route>` com o element={PaginaPadrao} as rotas da aplicação.
+    - Entretanto, mesmo que a gente coloque dentro do nosso Route os nossos filhos, nós não conseguimos exibir ele. Para fazer isso funcionar, vamos importar dentro do componente `PaginaPadrao.tsx` o componente `outlet` do react-router-dom, o qual vai ser colocado dentro da PaginaPadrao. Assim o router dom vai passar a reconhecer os componentes de acordo com a rota. Esse é children do react router.
